@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg,#2980b9, #8e44ad);
+    height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+  }
+
+.imageItem{
+  max-width: 50px;
+}
+
+.background-controller{
+  border-radius: 12px;
+  padding: 20px;
+  
+}
+
+.imageWelcome{
+  max-width: 150px;
+  margin: auto;
+  margin-bottom: 20px;
+  display: flex;flex-direction: column; justify-content: center;align-items: center;
+}
+
+.baslik{
+  margin-top: 25px;
+}
+
+p{
+  color: black;
+}

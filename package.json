@@ -1,0 +1,20 @@
+{
+  "name": "proje",
+  "version": "1.0.0",
+  "description": "Bitirme Projesi 2022",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Furkan Koç",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.4.1",
+    "multer": "^1.4.5-lts.1",
+    "util": "^0.12.4"
+  }
+}

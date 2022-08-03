@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Bulut Depolama</title>
+    <link rel="stylesheet" href="css/log2style.css">
+  </head>
+  <body>
+      <div class="nav">
+          <input type="checkbox" id="nav-check">
+          <div class="nav-header">
+              <div class="nav-title">
+                  BulutDepolama
+              </div>
+          </div>
+          <div class="nav-btn">
+              <label for="nav-check">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </label>
+          </div>
+
+          <div class="nav-links"></div>
+      </div>
+      <div class="center">
+        <div class="position-controller"><img class = "imageWelcome" src="cloud.png" alt="cloud" /></div>
+          
+        <form action="/kontrol" method="POST">
+              <div class="txt_field">
+                  <input type="text" id="userName" name="userId" class="form-control" required autofocus>
+                  <label for="inputEmail" class="visually-hidden" >Kullanıcı Adı</label>
+              </div>
+
+              <div class="txt_field">
+                  <input type="password" id="inputPassword" name="userPassword" class="form-control" required>                  
+                  <label for="inputPassword" class="visually-hidden">Şifre</label>
+              </div>
+
+              <button type="submit">Giriş</button>             
+             
+              <div class="signup_link">
+              </div>
+
+              <div class="homepage">
+                <a href="/" class="btn-special">Anasayfa</a>
+              </div>
+          </form>
+          
+        </form>
+      </div>
+      <footer class="footer">
+      
+          <div class="text-center p-3">
+            © 2022 KTÜ Bitirme Projesi
+
+          </div>
+      
+      </footer>
+
+  </body>
+</html>

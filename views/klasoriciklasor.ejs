@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kişiye Özel Sayfa</title>
+  <link rel='stylesheet' href='/css/styles2.css' />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #495464;">
+    <a style="color:#f6f6f6" class="navbar-brand" href="/">Anasayfa</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+
+
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+
+  <form action="/geriDonKlasorici" method="post">
+    <button type="submit" name="geriDon" class="btn-link"><img src="/return.png" class="imageItem" alt="submit" /></button>
+    <input type="hidden" name="listName" value="<%=sayfaninAdı%>">
+    <input type="hidden" name="ustKlasor" value="<%=ustKlasor%>">
+
+  </form>
+
+
+  <div class="box" id ="heading">
+    <h1><%=sayfaninAdı%>/ <%=ustKlasor%>/ <%=klasorunAdi%> dosya konumundasınız.</h1>
+
+  </div>
+
+
+
+
+
+
+<!-- KLASORUN ICINDEKİ İTEM LİSTESİ AŞAĞIDA -->
+<!-- KLASORUN ICINDEKİ İTEM LİSTESİ AŞAĞIDA -->
+<!-- KLASORUN ICINDEKİ İTEM LİSTESİ AŞAĞIDA -->
+
+  <div class="login-box2" >
+
+
+
+    <form action="/deleteKlasorici" method="post" >
+
+    <% items.forEach((item, i) => { %>
+      <div class="item">
+        <label><img class="imageDelete" src="/delete.png"/></label>
+        <input type="checkbox" onChange="this.form.submit()" name="checkboxChecked" value="<%=item.name%>" >
+        <button style = "max-height: 50px; max-width: 50px; background-color: #FFFFFF; border-radius: 50%;  " type="submit" name="button" value="<%=item.name%>"><img src="/download.png" class="imageDelete" alt="submit" /></button>
+
+        <% let stringAdi = item.name %>
+        <% let sonUcHarf =  stringAdi.slice(stringAdi.length-3) %>
+
+        <% if(sonUcHarf == "txt") { %>
+
+          <img src="/txt.png" class="imageItem" alt="submit" />
+
+        <%  } else if (sonUcHarf == "exe") {  %>
+
+          <img src="/exe.png" class="imageItem" alt="submit" />
+
+        <%  } else if (sonUcHarf == "zip") {  %>
+
+          <img src="/zip.png" class="imageItem" alt="submit" />
+
+        <%  } else if (sonUcHarf == "jpg") {  %>
+
+          <img src="/jpg.png" class="imageItem" alt="submit" />
+
+        <%  } else if (sonUcHarf == "ocx") {  %>
+
+          <img src="/docx.png" class="imageItem" alt="submit" />
+
+        <%  } else if (sonUcHarf == "pdf") {  %>
+
+          <img src="/pdf.png" class="imageItem" alt="submit" />
+
+        <%  } else if (sonUcHarf == "mp3") {  %>
+
+          <img src="/mp3.png" class="imageItem" alt="submit" />
+
+        <%  }else if (sonUcHarf == "rar") {  %>
+
+          <img src="/rar.png" class="imageItem" alt="submit" />
+
+        <%  }else if (sonUcHarf == "xml") {  %>
+
+          <img src="/xml.png" class="imageItem" alt="submit" />
+
+        <%  }else if (sonUcHarf == "png") {  %>
+
+          <img src="/png.png" class="imageItem" alt="submit" />
+
+        <%  }else if (sonUcHarf == "ini") {  %>
+
+          <img src="/ini.png" class="imageItem" alt="submit" />
+
+        <%  }else if (sonUcHarf == "dll") {  %>
+
+          <img src="/dll.png" class="imageItem" alt="submit" />
+
+        <%  }else if (sonUcHarf == "doc") { %>
+
+          <img src="/doc.png" class="imageItem" alt="submit" />
+        <% } else { %>
+
+
+          <img src="/unknown.png" class="imageItem" alt="submit" />
+
+        <%  }  %>
+
+        <div class="wrap">
+          <p> <%= item.name %> </p>
+        </div>
+
+
+
+
+
+      </div>
+  <%  }); %>
+      <input type="hidden" name="listName" value="<%=sayfaninAdı%>">
+      <input type="hidden" name="klasorAdi" value="<%=klasorunAdi%>">
+      <input type="hidden" name="ustKlasor" value="<%=ustKlasor%>">
+    </form>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+  <div class="login-box">
+    <!--  SINGLE FILE -->
+
+   <form action="/klasoriciKlasorUploadFile" enctype="multipart/form-data" method="POST">
+      <input type="file" name="gelenFile"  />
+      <input type="hidden" name="klasorunAdi" value="<%=klasorunAdi%>">
+      <input type="hidden" name="ustKlasorunAdi" value="<%=ustKlasor%>">
+      <input type="hidden" name="sayfaninAdi" value="<%=sayfaninAdı%>">
+      <button class="btn btn-outline-light btn-sm" name="hangiSayfa" type="submit" value=<%=sayfaninAdı%> > Yükle </button>
+
+   </form>
+
+
+  </div>
+
+
+
+
+
+
+
+</body>
+</html>

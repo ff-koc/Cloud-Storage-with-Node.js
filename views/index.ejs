@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kişiye Özel Sayfa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel='stylesheet' href='/css/styles2.css' />
+
+</head>
+
+<body>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+
+        <div class="nav-title">
+            <img src="c.png" width="30" />
+            BulutDepolama
+        </div>
+    </div>
+    <div class="nav-btn">
+        <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+
+    <div class="nav-links">
+      <%=sayfaninAdı%>
+        <a href="/"><img src="exit.png" width="25" height="25" title="Çıkış" />  Çıkış Yap</a>
+    </div>
+    <hr/>  
+</div>
+
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: linear-gradient(120deg,#2980b9, #8e44ad);">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText"> 
+    </div>
+  </nav>
+
+
+  <div class ="login-box2">
+    <div class="klasor">
+      <form action="/klasorOlustur" method="post" >
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Klasör Adı" aria-label="Recipient's username" aria-describedby="basic-addon2"
+            name = "buttonClicked" >
+            <div class="input-group-append">
+              <button class="newclasor" type="submit" value="<%=sayfaninAdı%>" name="yeniKlasor">    + Yeni Klasör Oluştur   </button>
+            </div>
+        </div>
+        </form>
+        <div class="login-box">
+         <form action="/uploadFile" enctype="multipart/form-data" method="POST">
+            <input type="file" name="gelenFile"   />
+            <button class="newclasor" name="hangiSayfa" type="submit" value=<%=sayfaninAdı%>>    Yükle    </button>
+         </form>
+        </div>
+      
+    </div>
+    
+
+  <% if(klasorListesi.length>0){  %>
+
+    <div class="box" >
+
+
+
+      <ul class="yanYana">
+          <% klasorListesi.forEach((file, f ) => {  %>
+          <div >
+
+
+            <div class="itemHead">
+
+              <img src="folder.png" class="imageItem" alt="folder">
+
+
+              <form action="/klasoreGit" method="post">
+                <!-- <h5 style="padding-bottom: 60px; position:relative; top:45px; right:50px; max-width:39px; min-width:39px;"> <%= file %> </h2> -->
+                  <button style="padding-bottom: 60px; position:relative; top:45px; right:50px; max-width:39px;" type="submit" name="hangiKlasoreTiklandi" value= "<%=file%>" class="btn-link"><%= file %></button>
+                  <input type="hidden" name="hangiKullanicidanGeliyor" value=" <%=sayfaninAdı%>">
+              </form>
+
+
+
+
+
+              <form action="/deleteFile" method="post" >
+              <input type="hidden" name="sayfaninAdi" value="<%=sayfaninAdı%>">
+              <button style = "max-height: 50px; max-width: 52px; background-color: #FFFFFF; border-radius: 50%; position:relative; bottom:15px; right:40px; "
+                type="submit" name="klasorunAdi" value = "<%= file %>">
+                <img src="delete_folder2.png" class="imageDelete" alt="submit" />
+              </button>
+           </form>
+
+            </div>
+
+      </div>
+     <%    }); %>
+
+
+      </ul>
+
+</div>
+   <% }  %>
+
+
+
+  <div class="box">
+    <ul>
+
+      <form action="/delete" method="post" >
+
+      <% dosyaListesi.forEach((item, i) => { %>
+        <div class="item">
+          <label><img class="imageDelete" src="delete.png"/></label>
+          <input type="checkbox" onChange="this.form.submit()" name="checkboxChecked" value="<%=item.name%>" >
+          <button style = "max-height: 50px; max-width: 50px; background-color: #FFFFFF; border-radius: 50%;  " type="submit" name="button" value="<%=item.name%>"><img src="download.png" class="imageDelete" alt="submit" /></button>
+
+          <% let stringAdi = item.name %>
+          <% let sonUcHarf =  stringAdi.slice(stringAdi.length-3) %>
+
+          <% if(sonUcHarf == "txt") { %>
+
+            <img src="txt.png" class="imageItem" alt="submit" />
+
+          <%  } else if (sonUcHarf == "exe") {  %>
+
+            <img src="exe.png" class="imageItem" alt="submit" />
+
+          <%  } else if (sonUcHarf == "zip") {  %>
+
+            <img src="zip.png" class="imageItem" alt="submit" />
+
+          <%  } else if (sonUcHarf == "jpg") {  %>
+
+            <img src="jpg.png" class="imageItem" alt="submit" />
+
+          <%  } else if (sonUcHarf == "ocx") {  %>
+
+            <img src="docx.png" class="imageItem" alt="submit" />
+
+          <%  } else if (sonUcHarf == "pdf") {  %>
+
+            <img src="pdf.png" class="imageItem" alt="submit" />
+
+          <%  }else if (sonUcHarf == "xml") {  %>
+
+            <img src="xml.png" class="imageItem" alt="submit" />
+
+          <%  } else if (sonUcHarf == "mp3") {  %>
+
+            <img src="mp3.png" class="imageItem" alt="submit" />
+
+          <%  }else if (sonUcHarf == "rar") {  %>
+
+            <img src="rar.png" class="imageItem" alt="submit" />
+
+          <%  }  else if (sonUcHarf == "png") {  %>
+
+            <img src="png.png" class="imageItem" alt="submit" />
+
+          <%  }else if (sonUcHarf == "ini") {  %>
+
+            <img src="ini.png" class="imageItem" alt="submit" />
+
+          <%  }else if (sonUcHarf == "dll") {  %>
+
+            <img src="dll.png" class="imageItem" alt="submit" />
+
+          <%  }else if (sonUcHarf == "doc") {  %>
+
+            <img src="doc.png" class="imageItem" alt="submit" />
+
+          <%  }else { %>
+
+            <img src="unknown.png" class="imageItem" alt="submit" />
+
+          <%  }  %>
+
+
+          <div class="wrap">
+            <p> <%= item.name %> </p>
+          </div>
+
+
+
+
+
+        </div>
+    <%  }); %>
+        <input type="hidden" name="listName" value="<%=sayfaninAdı%>">
+      </form>
+
+    </ul>
+   
+
+  </div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
